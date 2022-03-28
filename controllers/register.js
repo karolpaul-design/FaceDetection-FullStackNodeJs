@@ -1,0 +1,38 @@
+const handleRegister = async (req, res, bcrypt, prisma, Prisma) => {
+  const { name, email, password } = await req.body;
+  const saltRounds = 10;
+  // password hash start
+  const salt = bcrypt.genSaltSync(saltRounds);
+  const hash = bcrypt.hashSync(password, salt);
+  // password hash end
+
+  try {
+    const user = prisma.users.create({
+      data: {
+        name: name,
+        email: email,
+        joined: new Date(),
+      },
+    });
+    const hashDB = prisma.login.create({
+      data: {
+        email: email,
+        hash: hash,
+      },
+    });
+    const result = await prisma.$transaction([user, hashDB]);
+    res.json(result[0]);
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      if (e.code === "P2002") {
+        res.status(400).json("New user cannot be created with this email");
+      }
+    }
+    res.status(400).json("unable to registrate");
+    // throw e;
+  }
+};
+
+module.exports = {
+  handleRegister: handleRegister,
+};
