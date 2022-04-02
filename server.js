@@ -3,14 +3,16 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const app = express();
 const { PrismaClient, Prisma } = require("@prisma/client");
+const prisma = new PrismaClient();
+
 const register = require("./controllers/register");
 const signIn = require("./controllers/signIn");
 const profileData = require("./controllers/profile");
 const image = require("./controllers/image");
-const prisma = new PrismaClient();
-
+const path = require("path");
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname + "/public")));
 
 //sign in --> POST success/fail
 app.post("/signin", (req, res) => {
@@ -32,6 +34,7 @@ app.put("/image", (req, res) => {
   image.handleImages(req, res, prisma, Prisma);
 });
 
-app.listen(3000, () => {
-  console.log("app is running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`app is running on port ${PORT}`);
 });
