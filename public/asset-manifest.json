@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/FaceDetection-project-reactJs/static/css/main.c7eea9c0.css",
-    "main.js": "/FaceDetection-project-reactJs/static/js/main.c66910db.js",
+    "main.js": "/FaceDetection-project-reactJs/static/js/main.a3e8d974.js",
     "static/js/787.3d89efb7.chunk.js": "/FaceDetection-project-reactJs/static/js/787.3d89efb7.chunk.js",
     "index.html": "/FaceDetection-project-reactJs/index.html",
     "main.c7eea9c0.css.map": "/FaceDetection-project-reactJs/static/css/main.c7eea9c0.css.map",
-    "main.c66910db.js.map": "/FaceDetection-project-reactJs/static/js/main.c66910db.js.map",
+    "main.a3e8d974.js.map": "/FaceDetection-project-reactJs/static/js/main.a3e8d974.js.map",
     "787.3d89efb7.chunk.js.map": "/FaceDetection-project-reactJs/static/js/787.3d89efb7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7eea9c0.css",
-    "static/js/main.c66910db.js"
+    "static/js/main.a3e8d974.js"
   ]
 }
