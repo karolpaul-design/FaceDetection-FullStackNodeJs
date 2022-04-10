@@ -19,5 +19,13 @@
   "devDependencies": {
     "prisma": "^3.11.0"
   },
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolpaul-design/FaceDetection-BackEndNodeJs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/karolpaul-design/FaceDetection-BackEndNodeJs/issues"
+  },
+  "homepage": "https://github.com/karolpaul-design/FaceDetection-BackEndNodeJs#readme"
 }
