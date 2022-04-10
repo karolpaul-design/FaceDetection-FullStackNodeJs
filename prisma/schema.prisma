@@ -11,7 +11,7 @@ datasource db {
 model login {
   id    Int    @default(autoincrement())
   hash  String @db.VarChar(100)
-  email String  
+  email String @unique
 
   @@ignore
 }
@@ -20,7 +20,7 @@ model login {
 model users {
   id      Int      @default(autoincrement())
   name    String?  @db.VarChar(100)
-  email   String    
+  email   String   @unique
   entries BigInt?  @default(0)
   joined  DateTime @db.Timestamp(6)
 
