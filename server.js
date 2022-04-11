@@ -11,7 +11,7 @@ const signIn = require("./controllers/signIn");
 const profileData = require("./controllers/profile");
 const image = require("./controllers/image");
 const path = require("path");
-console.log();
+
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -32,7 +32,7 @@ client.query(
 );
 app.use(cors());
 app.use(express.json());
-
+console.log(client);
 app.use(express.static(path.join(__dirname + "/public")));
 
 //sign in --> POST success/fail
