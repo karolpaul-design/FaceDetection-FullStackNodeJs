@@ -18,7 +18,7 @@ const client = new Client({
   },
 });
 client.connect();
-
+console.log();
 client.query(
   "SELECT table_schema,table_name FROM information_schema.tables;",
   (err, res) => {
@@ -49,7 +49,7 @@ app.get("/profile/:id", (req, res) => {
   profileData.handleProfileData(req, res, prisma);
 });
 
-//image --> PUT --> user
+//image --> PUT --> users
 app.put("/image", (req, res) => {
   image.handleImages(req, res, prisma, Prisma);
 });
