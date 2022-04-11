@@ -18,7 +18,7 @@ const client = new Client({
   },
 });
 client.connect();
-console.log(client);
+
 client.query(
   "SELECT table_schema,table_name FROM information_schema.tables;",
   (err, res) => {
