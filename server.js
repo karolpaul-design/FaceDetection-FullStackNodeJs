@@ -11,6 +11,7 @@ const signIn = require("./controllers/signIn");
 const profileData = require("./controllers/profile");
 const image = require("./controllers/image");
 const path = require("path");
+console.log();
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
