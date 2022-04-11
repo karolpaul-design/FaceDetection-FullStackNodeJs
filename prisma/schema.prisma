@@ -4,18 +4,19 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://uuqkvweaaueiyj:b07e50a3396eb34100b19151c06758069f5390bffa6068c84706e402e04606e7@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/dbckjj3v44otp3"
+  url      = "postgres://oraliljzbwfvfh:c1ed25bca688e918d587bf5556e155a0c040b6820bb45409e1cd6550afcc4646@ec2-54-228-32-29.eu-west-1.compute.amazonaws.com:5432/devnh7mqnr2cdq"
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model login {
   id    Int    @default(autoincrement())
   hash  String @db.VarChar(100)
   email String @unique
 
-  
+  @@ignore
 }
 
-
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model users {
   id      Int      @default(autoincrement())
   name    String?  @db.VarChar(100)
@@ -23,5 +24,5 @@ model users {
   entries BigInt?  @default(0)
   joined  DateTime @db.Timestamp(6)
 
-  
+  @@ignore
 }
