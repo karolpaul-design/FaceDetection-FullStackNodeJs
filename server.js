@@ -12,8 +12,7 @@ const profileData = require("./controllers/profile");
 const image = require("./controllers/image");
 const path = require("path");
 const client = new Client({
-  connectionString:
-    "postgres://oraliljzbwfvfh:c1ed25bca688e918d587bf5556e155a0c040b6820bb45409e1cd6550afcc4646@ec2-54-228-32-29.eu-west-1.compute.amazonaws.com:5432/devnh7mqnr2cdq",
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
