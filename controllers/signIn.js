@@ -12,11 +12,12 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
     // const hash = emailValidation.hash;
     // const passwordValidation = bcrypt.compareSync(password, hash);
     // if (passwordValidation) {
-    const user = await prisma.users.findUnique({
-      where: {
-        email: email,
-      },
-    });
+    const user = await prisma.users;
+    // .findUnique({
+    //   where: {
+    //     email: email,
+    //   },
+    // });
     res.json(user);
     // } else {
     //   res.status(400).json("wrong password");
