@@ -5,7 +5,7 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
   if (!email || !password) {
     return res.status(400).json("incorrect form submission");
   }
-  const emailValidation = await prisma.login.findUnique({
+  const emailValidation = await prisma.users.findUnique({
     where: {
       email: email,
     },
