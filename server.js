@@ -20,16 +20,6 @@ const client = new Client({
 });
 client.connect();
 
-client.query(
-  "SELECT table_schema,table_name FROM information_schema.tables;",
-  (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-      console.log(JSON.stringify(row));
-    }
-    client.end();
-  }
-);
 app.use(cors());
 app.use(express.json());
 console.log(client);
@@ -59,3 +49,13 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
 });
+client.query(
+  "SELECT table_schema,table_name FROM information_schema.tables;",
+  (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+      console.log(JSON.stringify(row));
+    }
+    client.end();
+  }
+);
