@@ -22,7 +22,7 @@ client.connect();
 
 app.use(cors());
 app.use(express.json());
-console.log(client);
+
 app.use(express.static(path.join(__dirname + "/public")));
 
 //sign in --> POST success/fail
