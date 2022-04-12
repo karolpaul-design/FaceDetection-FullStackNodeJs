@@ -5,15 +5,15 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
   if (!email || !password) {
     return res.status(400).json("incorrect form submission");
   }
-  const emailValidation = await prisma.users.findUnique({
+  const emailValidation = await prisma.login.findUnique({
     where: {
       email: email,
     },
   });
   res.json(emailValidation);
   if (emailValidation) {
-    // const hash = await emailValidation.hash;
-    // const passwordValidation = await bcrypt.compareSync(password, hash);
+    const hash = await emailValidation.hash;
+    const passwordValidation = await bcrypt.compareSync(password, hash);
     if (true) {
       const user = await prisma.users.findUnique({
         where: {
