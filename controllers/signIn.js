@@ -17,10 +17,10 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
       try {
         const user = await prisma.users.findUnique({
           where: {
-            email: email,
+            email: "paula@gmail.com",
           },
         });
-        res.json("user");
+        res.json(user);
       } catch (e) {
         response.status(400).json(e);
       }
