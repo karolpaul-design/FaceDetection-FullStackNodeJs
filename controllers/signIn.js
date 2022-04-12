@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const handleSignIn = async (req, res, prisma, bcrypt) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -12,11 +14,15 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
     const hash = emailValidation.hash;
     const passwordValidation = bcrypt.compareSync(password, hash);
     if (passwordValidation) {
-      const user = await prisma.users.findUnique({
-        where: {
-          email: email,
-        },
-      });
+      try {
+        const user = await prisma.users.findUnique({
+          where: {
+            email: email,
+          },
+        });
+      } catch (e) {
+        response.status(400).json(e);
+      }
       res.json(user);
     } else {
       res.status(400).json("wrong password");
