@@ -10,14 +10,14 @@ const handleRegister = async (req, res, bcrypt, prisma, Prisma) => {
   // password hash end
 
   try {
-    const user = await prisma.users.create({
+    const user = prisma.users.create({
       data: {
         name: name,
         email: email,
         joined: new Date(),
       },
     });
-    const hashDB = await prisma.login.create({
+    const hashDB = prisma.login.create({
       data: {
         email: email,
         hash: hash,
