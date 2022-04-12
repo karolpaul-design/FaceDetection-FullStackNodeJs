@@ -15,7 +15,7 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
     const passwordValidation = bcrypt.compareSync(password, hash);
     if (passwordValidation) {
       try {
-        const user = await prisma.users.findUnique({
+        const user = await prisma.users.findMany({
           where: {
             email: "paula@gmail.com",
           },
