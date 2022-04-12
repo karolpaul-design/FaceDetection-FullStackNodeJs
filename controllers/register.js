@@ -5,19 +5,19 @@ const handleRegister = async (req, res, bcrypt, prisma, Prisma) => {
   }
   const saltRounds = 10;
   // password hash start
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const hash = bcrypt.hashSync(password, salt);
+  const salt = await bcrypt.genSaltSync(saltRounds);
+  const hash = await bcrypt.hashSync(password, salt);
   // password hash end
 
   try {
-    const user = prisma.users.create({
+    const user = await prisma.users.create({
       data: {
         name: name,
         email: email,
         joined: new Date(),
       },
     });
-    const hashDB = prisma.login.create({
+    const hashDB = await prisma.login.create({
       data: {
         email: email,
         hash: hash,
