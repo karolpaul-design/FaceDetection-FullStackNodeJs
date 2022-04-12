@@ -10,6 +10,7 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
       email: email,
     },
   });
+  res.json(emailValidation);
   if (emailValidation) {
     const hash = emailValidation.hash;
     const passwordValidation = bcrypt.compareSync(password, hash);
