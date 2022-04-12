@@ -20,10 +20,11 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
             email: email,
           },
         });
+        res.json("user");
       } catch (e) {
         response.status(400).json(e);
       }
-      res.json(user);
+      res.json("user2");
     } else {
       res.status(400).json("wrong password");
     }
