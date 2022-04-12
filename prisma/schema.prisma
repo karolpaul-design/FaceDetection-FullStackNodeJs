@@ -8,15 +8,14 @@ datasource db {
 }
 
 model login {
-  id    Int    @id @default(autoincrement())
   hash  String @db.VarChar(100)
   email String @unique
 }
 
 model users {
-  id      Int      @id @default(autoincrement())
-  name    String   @db.VarChar(100)
-  email   String   @unique
-  entries BigInt   @default(0)
-  joined  DateTime @db.Timestamp(6)
+  id       Int      @id @default(autoincrement())
+  username String   @db.VarChar(100)
+  email    String   @unique
+  entries  Int?     @default(0)
+  joined   DateTime @default(now()) @db.Timestamp(6)
 }
