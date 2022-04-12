@@ -10,11 +10,12 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
       email: email,
     },
   });
-  res.json(emailValidation);
+
   if (emailValidation) {
     const hash = await emailValidation.hash;
     const passwordValidation = await bcrypt.compareSync(password, hash);
-    if (true) {
+    res.json(passwordValidation);
+    if (passwordValidation) {
       const user = await prisma.users.findUnique({
         where: {
           email: email,
