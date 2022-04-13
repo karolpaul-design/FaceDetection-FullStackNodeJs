@@ -10,11 +10,10 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
       email: email,
     },
   });
-
+  console.log("true");
   if (emailValidation) {
     const hash = await emailValidation.hash;
     const passwordValidation = await bcrypt.compareSync(password, hash);
-
     if (passwordValidation) {
       const user = await prisma.users.findUnique({
         where: {
@@ -23,7 +22,7 @@ const handleSignIn = async (req, res, prisma, bcrypt) => {
       });
       return res.json(user);
     } else {
-      res.status(400).json("wrong password");
+      res.status(400).json("wrong password ");
     }
   } else {
     res.status(400).json("wrong email");
